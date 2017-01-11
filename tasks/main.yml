@@ -1,0 +1,27 @@
+---
+- name: install Erlang
+  apt: name=erlang state=present
+
+- name: install make
+  apt: name=make state=present
+
+- name: install autoconf
+  apt: name=autoconf state=present
+
+- name: install fakeroot
+  apt: name=fakeroot state=present
+
+- name: install debhelper
+  apt: name=debhelper state=present
+
+- name: install python-sphinx
+  apt: name=python-sphinx state=present
+
+- name: clone Tsung repo
+  git: repo=https://github.com/processone/tsung.git dest=/root/tsung force=yes
+
+- name: make a Tsung deb
+  shell: cd /root/tsung && ./configure && make deb creates=/root/tsung_1.6.0-1_all.deb
+
+- name: install Tsung
+  apt: deb=/root/tsung_1.6.0-1_all.deb
