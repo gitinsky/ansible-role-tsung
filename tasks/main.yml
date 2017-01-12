@@ -17,6 +17,12 @@
 - name: install python-sphinx
   apt: name=python-sphinx state=present
 
+- name: install gnuplot
+  apt: name=gnuplot state=present
+
+- name: install libtemplate-perl
+  apt: name=libtemplate-perl state=present
+
 - name: clone Tsung repo
   git: repo=https://github.com/processone/tsung.git dest=/root/tsung force=yes
 
